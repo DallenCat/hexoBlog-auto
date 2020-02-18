@@ -1,7 +1,15 @@
-# .travis.yml
-language: node_js   #前端工程所以是JavaScript，编译环境是node_js
+language: node_js
 node_js:
-- '8'   #指定node版本
+- '8'
 branchs:
   only:
-  - master  #指定只有检测到master分支有变动时才执行任务
+  - master
+env:
+  global:
+    secure: C2sjMB0fXrEN/5pZJ+DvbrQms6iMedshkev0ov0ZEWusKd7SfbsLOStdzYre5rSwDXYHMuGNyX4Wk7tm8sfMoqyH7wV6E+90pq5G/CtAg2LpY1kQ+oYl7jsbMbyH8YQE71yjaKKhx7zcssZ/62SUyQTJIOwNSOkYVnlbrvRXxC+QgZ8BNrg66bTrBzvTvMDIr7ldEodUhxdAfrWQSkcSi3kKOYLGR2f96SBO5zOTOWnyrESQTw4Lvy5Qk23Avahnx0IHQYZ6265/CBNi4tigf4tdmbtZbQJ+tDZhgGA01pTNKybkM3nC5fystAI3aVPLPZYbHHys70lMC3wAZz+mq+rd65AOSNYnhKBB/ibt9exHMRZ7vPYQq8F2EyYktFqwY3ukKrRog4yXOMBPIyLUQJ984yyWOmW4/royc4w6okZGhDloJCuQR7P2cBEeg6VslLSyB3+n60a0LEJ8Mgx+dL6QFp+D/+O5E38zfoELuDr8We2IsYNa2V0jy04vHr8p/WITT6JtP/GfWkw8xOup1w2yqEUykm9rWnOXXCQEp2R1UMc3VnrgFUUVCgYnMxsFFVnkvdvYtbL3PLAV5aUbz/5UQN0Wzu0L5L8b9JoZ4TPvLyh/bSQ4oIzpCNfj05WAb65W9SZF4+ZWtxvhY+zekvIlfZi/8EuG2c/ichQi4j0=
+before_install:
+- openssl aes-256-cbc -K $encrypted_f61dd4bb83d2_key -iv $encrypted_f61dd4bb83d2_iv
+  -in id_rsa.enc -out ~\/.ssh/id_rsa -d
+after_success:
+- chmod 600 ~/.ssh/id_rsa   #还是Linux文件权限问题
+- ssh root@134.175.240.20 -o StrictHostKeyChecking=no 'cd ~/srv/hexoBlog-auto && git pull && hexo clean && hexo deploy'   #使用ssh连接服务器
