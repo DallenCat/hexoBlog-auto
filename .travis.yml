@@ -1,13 +1,25 @@
 language: node_js
 node_js:
-- '8'
+- stable
 branchs:
   only:
   - master
 env:
-  - secure: "l7HTiWgr7gcEensWJURRQUBnZKF9xCdSsXc3J2IcOOWbtttMxLm5RIN1/ffTKnl4ExxN5Hvnjz6DWyNDUSe68aq8+RkYWkQYti+poJMYcYEz7js4LArGV6Z57waLWS15OiNGozbTnSOiXDPVsfU72cSR4pLElDkmVmoHoVuOt1f+JzzFr5wwGgJcqeah/XE7eTcwESkliz9gREXXNwg0DopslHix9cHGV/Mm6cOhM2UlaeFxB4Y7R9mbikV5dKaTW2aOZwF0eDsVhWSaZtucA1YKnPyqovO0wTM1zwn/iZ/da7Eq3xfrM/A57U1h3LbTqGQYHHbgtZsStn9X/f2D5pN5RiPtUerzFmP4u8IilK8CodNfAtwGlK8IhmC59wbnaklwli+Xq7AtAZYZji8gHUpt6qL1jDkZ0pm49i0x/x2dxGeMoCmX7hMVJwkkGWg2LtNeSLZSvWBppuuNUzyOKEUoaiiULm4KBpAB5HmLxeFmfZ0rgbg+bzWi1O6wqXM6odtfFHs8njzpygUZGZbVnjz0l9OEnz2mhM0jNYP0jrqWwCWf7QNk4EhaYliBVS+Ayj6/evr2MHZ6qxqVyixn7X+9wNPd+cCiV/1eZoEszpXZ6kmouZFpAj008VAh3FC0xxAbOveA7pOtaeaNehoEqVBGdbtZnBKT/CcjTG3xqwE="
+  matrix:
+  - secure: l7HTiWgr7gcEensWJURRQUBnZKF9xCdSsXc3J2IcOOWbtttMxLm5RIN1/ffTKnl4ExxN5Hvnjz6DWyNDUSe68aq8+RkYWkQYti+poJMYcYEz7js4LArGV6Z57waLWS15OiNGozbTnSOiXDPVsfU72cSR4pLElDkmVmoHoVuOt1f+JzzFr5wwGgJcqeah/XE7eTcwESkliz9gREXXNwg0DopslHix9cHGV/Mm6cOhM2UlaeFxB4Y7R9mbikV5dKaTW2aOZwF0eDsVhWSaZtucA1YKnPyqovO0wTM1zwn/iZ/da7Eq3xfrM/A57U1h3LbTqGQYHHbgtZsStn9X/f2D5pN5RiPtUerzFmP4u8IilK8CodNfAtwGlK8IhmC59wbnaklwli+Xq7AtAZYZji8gHUpt6qL1jDkZ0pm49i0x/x2dxGeMoCmX7hMVJwkkGWg2LtNeSLZSvWBppuuNUzyOKEUoaiiULm4KBpAB5HmLxeFmfZ0rgbg+bzWi1O6wqXM6odtfFHs8njzpygUZGZbVnjz0l9OEnz2mhM0jNYP0jrqWwCWf7QNk4EhaYliBVS+Ayj6/evr2MHZ6qxqVyixn7X+9wNPd+cCiV/1eZoEszpXZ6kmouZFpAj008VAh3FC0xxAbOveA7pOtaeaNehoEqVBGdbtZnBKT/CcjTG3xqwE=
+  global:
+    secure: po40bxT36NCa+9fkp4Qlso65S2guRu/Sv/cb+zEnDy62lu1TZ6dPuZmciAoKqu/I/rcgUy2dgvfI6Fx2e/VJ/wuL7bHJpwk6RxgHTsImtKa2dJrG3we1Si+Cie/dXR3rSEaPze4O8Bb88qSXOjLJ/aIaGAvD/gQ0SxAih0h92+gHGKQ0lHpGyBPJAj4lYofffY9gaBoWzd6uZzOz8ZJU4ve62zAU5oASC+7HYfodQK3SZwuoEjCFQL7lYzi9J/fzxfD2sJqJZ0chz4rTS4lVwz9R6PoX1yD4myaZY5ynd1cLRn4TJy/2e3JHvhrqnUePcB5wz4ENOKGHqcZUw8AH/8sC0wev1DLtv8ydbseit2br3Mlty66y98Bs98jwPFejD1aUibxS2S7q0qTkSlrlG9M06GFOrDi/dPmqypcdkjGPUpl6Rgh4Uf1cTg3k2kCxF06dQEw8TXRnDfGoMftdRLXwETsvRKW/OldhEIU1zaeY8vLTIDRCcX/wj/DUGzpH3QQpbB5oygFT/OKjdgFMG73U+WtbWR+hNgFBFrunwbAjiAicmZjvWVuPEZNYfr26fBdMaoc+gL0I+y1BstTRsFY5QAF5JdaC64GbGm7PoWLVEIuM5dymVYednALbNHsb6ekTq5FN+AhoabwM7qJTViWW4GZNCmVOroL7hN6uw9E=
+install:
+- npm install
 addons:
   ssh_known_hosts:
-  - www.daiailing.cn #受信主机，你的Linux服务器ip
+  - www.daiailing.cn
 after_success:
 - rsync -az ./public/* travis@www.daiailing.cn:$TARGET_DIR
+before_install:
+- openssl aes-256-cbc -K $encrypted_f61dd4bb83d2_key -iv $encrypted_f61dd4bb83d2_iv
+  -in travis.enc -out travis -d
+- chmod 700 .ssh
+- chmod 600 .ssh/id_rsa
+- eval "$(ssh-agent -s)"
+- ssh-add .ssh/id_rsa
