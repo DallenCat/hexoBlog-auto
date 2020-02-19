@@ -19,7 +19,5 @@ after_success:
 before_install:
 - openssl aes-256-cbc -K $encrypted_f61dd4bb83d2_key -iv $encrypted_f61dd4bb83d2_iv
   -in travis.enc -out travis -d
-- chmod 700 .ssh
-- chmod 600 .ssh/id_rsa
 - eval "$(ssh-agent -s)"
 - ssh-add .ssh/id_rsa
