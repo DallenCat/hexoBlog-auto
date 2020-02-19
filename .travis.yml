@@ -17,10 +17,5 @@ before_install:
 - eval "$(ssh-agent -s)"
 - ssh-add .ssh/id_rsa
 after_success:
-- chmod 600 ~/.ssh/id_rsa
-<<<<<<< HEAD
 - ssh 134.175.240.20 -o StrictHostKeyChecking=no 'cd ~/srv/hexoBlog-auto && git
   pull && npm install && npm run deploy'
-=======
-- ssh test -o StrictHostKeyChecking=no 'cd ~/srv/hexoBlog-auto && git pull && npm install && npm run deploy'
->>>>>>> 9d550de5a1c537711dcfd23b53e930256b185a18
