@@ -12,5 +12,5 @@ addons:
   - 134.175.240.20 #受信主机，你的Linux服务器ip
 after_success:
 - chmod 600 ~/.ssh/id_rsa
-- ssh test -o StrictHostKeyChecking=no 'cd ~/srv/hexoBlog-auto && git
+- ssh 134.175.240.20 -o StrictHostKeyChecking=no 'cd ~/srv/hexoBlog-auto && git
   pull && npm install && npm run deploy'
