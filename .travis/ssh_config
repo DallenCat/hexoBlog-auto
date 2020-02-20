@@ -1,5 +1,7 @@
-Host travis@134.175.240.20
+Host test
+HostName 134.175.240.20
+#登陆的用户名
 User travis
-StrictHostKeyChecking no
-IdentityFile ~/.ssh/id_rsa_blog
 IdentitiesOnly yes
+#登陆使用的密钥
+IdentityFile ~/.travis/id_rsa_blog
