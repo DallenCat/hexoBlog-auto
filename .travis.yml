@@ -6,6 +6,9 @@ branchs:
   - master
 install:
 - npm install
+- npm install --save hexo-deployer-git
+- npm install --save hexo-helper-live2d
+- npm install --save live2d-widget-model-koharu
 addons:
   ssh_known_hosts:
   - 134.175.240.20
