@@ -8,7 +8,7 @@ install:
 - npm install
 addons:
   ssh_known_hosts:
-  - www.daiailing.cn
+  - 134.175.240.20
 before_install:
 - openssl aes-256-cbc -K $encrypted_f61dd4bb83d2_key -iv $encrypted_f61dd4bb83d2_iv
   -in .travis/id_rsa_blog.enc -out ~/.ssh/id_rsa -d
