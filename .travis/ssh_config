@@ -1,0 +1,5 @@
+Host 134.175.240.20
+User travis
+StrictHostKeyChecking no
+IdentityFile ~/.ssh/id_rsa_blog
+IdentitiesOnly yes
