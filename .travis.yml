@@ -20,4 +20,4 @@ before_install:
 - git config --global user.email 809348708@qq.com #设置github用户邮箱
 # 执行的命令
 after_success:
-- ssh travis@134.175.240.20 -o StrictHostKeyChecking=no 'cd ~srv/hexoBlog-auto && git pull && npm install && hexo d'
+- ssh travis@134.175.240.20 -o StrictHostKeyChecking=no 'cd ~/hexoBlog-auto && git pull && npm install && hexo d'
