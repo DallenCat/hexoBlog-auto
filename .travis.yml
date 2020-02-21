@@ -22,10 +22,11 @@ before_install:
 - cp .travis/ssh_config ~/.ssh/config
 - git config --global user.name "DallenCat" #设置github用户名
 - git config --global user.email 809348708@qq.com #设置github用户邮箱
-- cd ~/hexoBlog-auto  && git pull
 # 执行的命令
 after_success:
 - ssh travis@134.175.240.20 -o StrictHostKeyChecking=no 
+- 'cd ~/hexoBlog-auto  && git pull'
+
 # - 'cd ~/hexoBlog-auto  && git pull  && hexo clean && yuque-hexo sync && hexo deploy'
 deploy:
 - npm run deploy
