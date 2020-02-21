@@ -73,6 +73,12 @@ avatar: 'http://www.daiailing.cn/img/head.png'
 
 subtitle: "人生的乐趣是什么呢？『是对于明天的期待。每天的落日都是不一样的，太阳和月亮也是，没有任何一天是一模一样的，因为我们每天都在过着不同的日子。』"
 
+# Automatically Excerpt. Not recommand.
+# Please use <!-- more --> in the post to control excerpt accurately.
+auto_excerpt:
+  enable: true
+  length: 150
+
 #是否开启分享
 share_jia: true
 
