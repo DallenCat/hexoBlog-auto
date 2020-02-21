@@ -6,6 +6,7 @@ branchs:
   - master
 install:
 - npm install
+- npm install --save yuque-hexo
 - npm install --save hexo-deployer-git
 - npm install --save hexo-helper-live2d
 - npm install --save live2d-widget-model-koharu
