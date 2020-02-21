@@ -119,7 +119,7 @@ jsonContent:
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: root@134.175.240.20:/home/git/hexoBlog # 预览https://dallencat.github.io/hexo.github.io/
+  repo: travis@134.175.240.20:/home/git/hexoBlog # 预览https://dallencat.github.io/hexo.github.io/
   branch: master
 
 admin:
