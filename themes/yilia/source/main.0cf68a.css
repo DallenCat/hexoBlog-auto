@@ -2133,6 +2133,10 @@ pre .id {
     transition: all .2s ease-in
 }
 
+.outside-article img {
+    max-width: 50% !important;
+}
+
 .article img {
     max-width: 100%
 }
